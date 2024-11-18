@@ -1,6 +1,5 @@
 package com.chukcheck.core.entity;
 
-import com.chukcheck.core.entity.BaseTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

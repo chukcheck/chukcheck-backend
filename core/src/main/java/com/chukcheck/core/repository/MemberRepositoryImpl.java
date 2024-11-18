@@ -2,7 +2,6 @@ package com.chukcheck.core.repository;
 
 import com.chukcheck.core.dto.search.MemberSearch;
 import com.chukcheck.core.entity.Member;
-import com.chukcheck.core.repository.MemberQueryRepository;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;

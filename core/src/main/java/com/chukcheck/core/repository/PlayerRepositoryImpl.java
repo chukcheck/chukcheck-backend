@@ -5,7 +5,6 @@ import com.chukcheck.core.entity.BaseStatus;
 import com.chukcheck.core.entity.Player;
 import com.chukcheck.core.entity.PlayerAuthority;
 import com.chukcheck.core.entity.Position;
-import com.chukcheck.core.repository.PlayerQueryRepository;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
