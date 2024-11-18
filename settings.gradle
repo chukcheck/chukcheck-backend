@@ -1,1 +1,5 @@
 rootProject.name = 'chukcheck-backend'
+
+include("core")
+include("api")
+include("scheduler")
