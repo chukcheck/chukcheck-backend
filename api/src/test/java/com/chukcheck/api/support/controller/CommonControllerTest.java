@@ -1,9 +1,9 @@
-package com.chukcheck.api.controller;
+package com.chukcheck.api.support.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.chukcheck.api.docs.CustomResponseFieldsSnippet;
-import com.chukcheck.api.docs.EnumDocs;
+import com.chukcheck.api.support.docs.CustomResponseFieldsSnippet;
+import com.chukcheck.api.support.docs.EnumDocs;
 import com.chukcheck.core.dto.response.BaseResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.chukcheck.api.docs;
+package com.chukcheck.api.support.docs;
 
 import org.springframework.http.MediaType;
 import org.springframework.restdocs.operation.Operation;

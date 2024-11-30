@@ -1,7 +1,14 @@
-package com.chukcheck.api.docs;
+package com.chukcheck.api.support.docs;
 
-import com.chukcheck.core.dto.jwt.JwtRole;
-import com.chukcheck.core.entity.*;
+import com.chukcheck.core.common.model.BaseStatus;
+import com.chukcheck.core.common.model.EnumType;
+import com.chukcheck.core.domain.attend.model.AttendStatus;
+import com.chukcheck.core.domain.match.model.MatchStatus;
+import com.chukcheck.core.domain.player.model.PlayerAuthority;
+import com.chukcheck.core.domain.player.model.Position;
+import com.chukcheck.core.domain.sns.model.SnsType;
+import com.chukcheck.core.domain.token.model.TokenRole;
+import com.chukcheck.core.domain.vote.model.VoteStatus;
 
 import java.util.Map;
 
@@ -17,7 +24,7 @@ public class EnumDocs {
     private final Map<String, String> position = getDocs(Position.values());
     private final Map<String, String> snsType = getDocs(SnsType.values());
     private final Map<String, String> voteStatus = getDocs(VoteStatus.values());
-    private final Map<String, String> jwtRole = getDocs(JwtRole.values());
+    private final Map<String, String> jwtRole = getDocs(TokenRole.values());
 
     public Map<String, String> getAttendStatus() {
         return attendStatus;

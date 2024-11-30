@@ -1,4 +1,4 @@
-package com.chukcheck.api.docs;
+package com.chukcheck.api.support.docs;
 
 import org.springframework.restdocs.operation.preprocess.OperationRequestPreprocessor;
 import org.springframework.restdocs.operation.preprocess.OperationResponsePreprocessor;

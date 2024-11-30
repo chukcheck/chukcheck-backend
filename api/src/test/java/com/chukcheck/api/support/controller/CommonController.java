@@ -1,6 +1,6 @@
-package com.chukcheck.api.controller;
+package com.chukcheck.api.support.controller;
 
-import com.chukcheck.api.docs.EnumDocs;
+import com.chukcheck.api.support.docs.EnumDocs;
 import com.chukcheck.core.dto.response.BaseResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
