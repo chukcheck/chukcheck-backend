@@ -1,4 +1,4 @@
-package com.chukcheck.core.entity;
+package com.chukcheck.core.common.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

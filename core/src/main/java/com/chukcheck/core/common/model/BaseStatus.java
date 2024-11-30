@@ -1,4 +1,4 @@
-package com.chukcheck.core.entity;
+package com.chukcheck.core.common.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
