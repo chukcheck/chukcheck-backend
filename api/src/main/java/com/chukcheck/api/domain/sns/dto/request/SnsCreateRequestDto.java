@@ -1,7 +1,6 @@
 package com.chukcheck.api.domain.sns.dto.request;
 
 import com.chukcheck.core.domain.sns.command.SnsCreateCommand;
-import com.chukcheck.core.domain.sns.entity.Sns;
 import com.chukcheck.core.domain.sns.model.SnsType;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
