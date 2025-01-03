@@ -1,8 +1,6 @@
 package com.chukcheck.api.domain.member.dto.request;
 
 import com.chukcheck.core.domain.member.command.MemberCreateCommand;
-import com.chukcheck.core.domain.member.entity.Member;
-import com.chukcheck.core.domain.sns.entity.Sns;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;

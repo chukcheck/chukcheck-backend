@@ -8,7 +8,6 @@ import com.chukcheck.core.domain.member.application.MemberWriter;
 import com.chukcheck.core.domain.member.command.MemberCreateCommand;
 import com.chukcheck.core.domain.member.command.MemberSearchCommand;
 import com.chukcheck.core.domain.member.entity.Member;
-import com.chukcheck.core.domain.member.repository.MemberRepository;
 import com.chukcheck.core.domain.sns.application.SnsReader;
 import com.chukcheck.core.domain.sns.entity.Sns;
 import lombok.RequiredArgsConstructor;
