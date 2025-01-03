@@ -1,6 +1,6 @@
-package com.chukcheck.core.dto.response;
+package com.chukcheck.api.domain.region.dto.response;
 
-import com.chukcheck.core.entity.Region;
+import com.chukcheck.core.domain.region.entity.Region;
 import lombok.Builder;
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class RegionResponse {
+public class RegionResponseDto {
 
     private final Long regionId;
     private final String country;
@@ -16,8 +16,8 @@ public class RegionResponse {
     private final LocalDateTime createdDate;
     private final LocalDateTime updatedDate;
 
-    public static RegionResponse of(Region region) {
-        return RegionResponse.builder()
+    public static RegionResponseDto of(Region region) {
+        return RegionResponseDto.builder()
                 .regionId(region.getId())
                 .country(region.getCountry())
                 .city(region.getCity())

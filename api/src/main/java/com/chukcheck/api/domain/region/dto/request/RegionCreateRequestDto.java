@@ -1,6 +1,7 @@
-package com.chukcheck.core.dto.request.create;
+package com.chukcheck.api.domain.region.dto.request;
 
-import com.chukcheck.core.entity.Region;
+import com.chukcheck.core.domain.region.command.RegionCreateCommand;
+import com.chukcheck.core.domain.region.entity.Region;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,7 +11,7 @@ import static lombok.AccessLevel.PROTECTED;
 
 @Getter
 @NoArgsConstructor(access = PROTECTED)
-public class RegionCreateRequest {
+public class RegionCreateRequestDto {
 
     @NotEmpty
     private String country;
@@ -19,13 +20,13 @@ public class RegionCreateRequest {
     private String city;
 
     @Builder
-    public RegionCreateRequest(String country, String city) {
+    public RegionCreateRequestDto(String country, String city) {
         this.country = country;
         this.city = city;
     }
 
-    public Region toEntity() {
-        return Region.builder()
+    public RegionCreateCommand toCommand() {
+        return RegionCreateCommand.builder()
                 .country(country)
                 .city(city)
                 .build();
