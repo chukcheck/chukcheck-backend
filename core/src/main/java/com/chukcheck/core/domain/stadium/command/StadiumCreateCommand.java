@@ -1,8 +1,6 @@
 package com.chukcheck.core.domain.stadium.command;
 
 import com.chukcheck.core.domain.stadium.entity.Stadium;
-import lombok.Builder;
-import lombok.Getter;
 
 public record StadiumCreateCommand(String name, String address, double latitude, double longitude) {
 

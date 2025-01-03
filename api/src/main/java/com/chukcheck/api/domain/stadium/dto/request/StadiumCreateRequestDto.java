@@ -1,7 +1,6 @@
 package com.chukcheck.api.domain.stadium.dto.request;
 
 import com.chukcheck.core.domain.stadium.command.StadiumCreateCommand;
-import com.chukcheck.core.domain.stadium.entity.Stadium;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Getter;

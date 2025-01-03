@@ -5,7 +5,6 @@ import com.chukcheck.core.domain.stadium.application.StadiumReader;
 import com.chukcheck.core.domain.stadium.application.StadiumWriter;
 import com.chukcheck.core.domain.stadium.command.StadiumCreateCommand;
 import com.chukcheck.core.domain.stadium.entity.Stadium;
-import com.chukcheck.core.domain.stadium.repository.StadiumRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
