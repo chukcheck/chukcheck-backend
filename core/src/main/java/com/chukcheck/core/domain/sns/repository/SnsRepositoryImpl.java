@@ -1,15 +1,15 @@
-package com.chukcheck.core.repository;
+package com.chukcheck.core.domain.sns.repository;
 
-import com.chukcheck.core.dto.search.SnsSearch;
-import com.chukcheck.core.entity.Sns;
-import com.chukcheck.core.entity.SnsType;
+import com.chukcheck.core.domain.sns.command.SnsSearchCommand;
+import com.chukcheck.core.domain.sns.entity.Sns;
+import com.chukcheck.core.domain.sns.model.SnsType;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
-import static com.chukcheck.core.entity.QSns.sns;
+import static com.chukcheck.core.domain.sns.entity.QSns.sns;
 import static java.util.Objects.nonNull;
 import static org.springframework.util.StringUtils.hasText;
 
@@ -19,10 +19,10 @@ public class SnsRepositoryImpl implements SnsQueryRepository {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<Sns> findQueryBySearch(SnsSearch search) {
+    public List<Sns> findQueryBySearch(SnsSearchCommand search) {
         return queryFactory
                 .selectFrom(sns)
-                .where(uuidEqual(search.getUuid()), typeEqual(search.getType()))
+                .where(uuidEqual(search.uuid()), typeEqual(search.type()))
                 .fetch();
     }
 

@@ -1,7 +1,7 @@
-package com.chukcheck.core.repository;
+package com.chukcheck.core.domain.sns.repository;
 
-import com.chukcheck.core.entity.Sns;
-import com.chukcheck.core.entity.SnsType;
+import com.chukcheck.core.domain.sns.entity.Sns;
+import com.chukcheck.core.domain.sns.model.SnsType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

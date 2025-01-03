@@ -1,5 +1,7 @@
-package com.chukcheck.core.entity;
+package com.chukcheck.core.domain.sns.entity;
 
+import com.chukcheck.core.common.model.BaseTime;
+import com.chukcheck.core.domain.sns.model.SnsType;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
