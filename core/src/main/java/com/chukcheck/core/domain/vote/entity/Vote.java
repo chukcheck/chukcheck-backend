@@ -1,5 +1,9 @@
-package com.chukcheck.core.entity;
+package com.chukcheck.core.domain.vote.entity;
 
+import com.chukcheck.core.domain.match.entity.Match;
+import com.chukcheck.core.domain.player.entity.Player;
+import com.chukcheck.core.common.model.BaseTime;
+import com.chukcheck.core.domain.vote.model.VoteStatus;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -43,7 +47,9 @@ public class Vote extends BaseTime {
         this.match.getVotes().add(this);
     }
 
-    public void setStatus(VoteStatus status) {
-        this.status = status;
+    public void updateStatus(VoteStatus status) {
+        if (status != null) {
+            this.status = status;
+        }
     }
 }
