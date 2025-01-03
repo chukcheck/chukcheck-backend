@@ -4,7 +4,6 @@ import com.chukcheck.core.domain.member.entity.Member;
 import com.chukcheck.core.domain.player.entity.Player;
 import com.chukcheck.core.domain.player.model.PlayerAuthority;
 import com.chukcheck.core.domain.team.entity.Team;
-import lombok.Getter;
 
 public record PlayerCreateCommand(
         Long memberId,

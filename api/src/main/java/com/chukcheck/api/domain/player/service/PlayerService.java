@@ -2,28 +2,22 @@ package com.chukcheck.api.domain.player.service;
 
 import com.chukcheck.api.common.exception.ApiError;
 import com.chukcheck.api.common.exception.ApiException;
-import com.chukcheck.api.domain.member.service.MemberService;
 import com.chukcheck.api.domain.player.dto.response.PlayerResponseDto;
-import com.chukcheck.api.domain.team.service.TeamService;
 import com.chukcheck.core.domain.member.application.MemberReader;
+import com.chukcheck.core.domain.member.entity.Member;
 import com.chukcheck.core.domain.player.application.PlayerReader;
 import com.chukcheck.core.domain.player.application.PlayerWriter;
 import com.chukcheck.core.domain.player.command.PlayerCreateCommand;
-import com.chukcheck.core.domain.player.command.PlayerUpdateCommand;
 import com.chukcheck.core.domain.player.command.PlayerSearchCommand;
-import com.chukcheck.core.domain.member.entity.Member;
+import com.chukcheck.core.domain.player.command.PlayerUpdateCommand;
 import com.chukcheck.core.domain.player.entity.Player;
 import com.chukcheck.core.domain.team.application.TeamReader;
 import com.chukcheck.core.domain.team.entity.Team;
-import com.chukcheck.core.domain.player.repository.PlayerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
-import static java.util.Objects.nonNull;
-import static java.util.stream.Collectors.toList;
 
 @Service
 @Transactional

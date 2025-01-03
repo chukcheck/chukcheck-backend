@@ -1,10 +1,7 @@
 package com.chukcheck.api.domain.player.dto.request;
 
-import com.chukcheck.core.domain.member.entity.Member;
 import com.chukcheck.core.domain.player.command.PlayerCreateCommand;
-import com.chukcheck.core.domain.player.entity.Player;
 import com.chukcheck.core.domain.player.model.PlayerAuthority;
-import com.chukcheck.core.domain.team.entity.Team;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Getter;

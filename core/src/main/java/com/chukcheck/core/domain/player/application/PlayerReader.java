@@ -3,7 +3,6 @@ package com.chukcheck.core.domain.player.application;
 import com.chukcheck.core.domain.player.command.PlayerSearchCommand;
 import com.chukcheck.core.domain.player.entity.Player;
 
-import java.util.Collection;
 import java.util.List;
 
 public interface PlayerReader {
