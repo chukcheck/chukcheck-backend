@@ -1,8 +1,8 @@
-package com.chukcheck.core.repository;
+package com.chukcheck.core.domain.match.repository;
 
-import com.chukcheck.core.dto.search.MatchSearch;
-import com.chukcheck.core.entity.Match;
-import com.chukcheck.core.entity.MatchStatus;
+import com.chukcheck.core.domain.match.command.MatchSearchCommand;
+import com.chukcheck.core.domain.match.entity.Match;
+import com.chukcheck.core.domain.match.model.MatchStatus;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -12,9 +12,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-import static com.chukcheck.core.entity.QMatch.match;
-import static com.chukcheck.core.entity.QStadium.stadium;
-import static com.chukcheck.core.entity.QTeam.team;
+import static com.chukcheck.core.domain.match.entity.QMatch.match;
+import static com.chukcheck.core.domain.stadium.entity.QStadium.stadium;
+import static com.chukcheck.core.domain.team.entity.QTeam.team;
 import static java.time.LocalTime.MAX;
 import static java.util.Objects.nonNull;
 import static java.util.Optional.ofNullable;
@@ -25,16 +25,16 @@ public class MatchRepositoryImpl implements MatchQueryRepository {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<Match> findQueryBySearch(MatchSearch search) {
+    public List<Match> findQueryBySearch(MatchSearchCommand search) {
         return queryFactory
                 .selectFrom(match)
                 .join(match.team, team).fetchJoin()
                 .join(match.stadium, stadium).fetchJoin()
                 .where(
-                        teamIdEqual(search.getTeamId()),
-                        stadiumIdEqual(search.getStadiumId()),
-                        statusEqual(search.getStatus()),
-                        matchDateBetween(search.getStartDate(), search.getEndDate())
+                        teamIdEqual(search.teamId()),
+                        stadiumIdEqual(search.stadiumId()),
+                        statusEqual(search.status()),
+                        matchDateBetween(search.startDate(), search.endDate())
                 ).fetch();
     }
 
@@ -93,11 +93,11 @@ public class MatchRepositoryImpl implements MatchQueryRepository {
     }
 
     private BooleanExpression beforeVoteStartDate() {
-        return match.voteDate.startDate.before(LocalDateTime.now());
+        return match.matchVoteDate.startDate.before(LocalDateTime.now());
     }
 
     private BooleanExpression beforeVoteEndDate() {
-        return match.voteDate.endDate.before(LocalDateTime.now());
+        return match.matchVoteDate.endDate.before(LocalDateTime.now());
     }
 
     private BooleanExpression beforeMatchEndDate() {
