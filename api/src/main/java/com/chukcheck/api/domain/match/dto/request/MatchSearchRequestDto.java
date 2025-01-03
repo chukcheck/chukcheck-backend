@@ -1,6 +1,7 @@
-package com.chukcheck.core.dto.search;
+package com.chukcheck.api.domain.match.dto.request;
 
-import com.chukcheck.core.entity.MatchStatus;
+import com.chukcheck.core.domain.match.command.MatchSearchCommand;
+import com.chukcheck.core.domain.match.model.MatchStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MatchSearch {
+public class MatchSearchRequestDto {
 
     private Long teamId;
     private Long stadiumId;
@@ -24,4 +25,8 @@ public class MatchSearch {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate endDate;
+
+    public MatchSearchCommand toCommand() {
+        return new MatchSearchCommand(teamId, stadiumId, status, startDate, endDate);
+    }
 }
