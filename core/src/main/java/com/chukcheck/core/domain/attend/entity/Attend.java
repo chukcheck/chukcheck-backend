@@ -1,5 +1,9 @@
-package com.chukcheck.core.entity;
+package com.chukcheck.core.domain.attend.entity;
 
+import com.chukcheck.core.domain.attend.model.AttendStatus;
+import com.chukcheck.core.common.model.BaseTime;
+import com.chukcheck.core.domain.match.entity.Match;
+import com.chukcheck.core.domain.player.entity.Player;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -43,7 +47,9 @@ public class Attend extends BaseTime {
         this.match.getAttends().add(this);
     }
 
-    public void setStatus(AttendStatus status) {
-        this.status = status;
+    public void updateStatus(AttendStatus status) {
+        if (status != null) {
+            this.status = status;
+        }
     }
 }

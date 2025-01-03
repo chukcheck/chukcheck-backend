@@ -1,5 +1,6 @@
-package com.chukcheck.core.entity;
+package com.chukcheck.core.domain.attend.model;
 
+import com.chukcheck.core.common.model.EnumType;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
