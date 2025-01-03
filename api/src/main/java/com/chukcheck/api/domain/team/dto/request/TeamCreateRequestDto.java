@@ -1,7 +1,6 @@
-package com.chukcheck.core.dto.request.create;
+package com.chukcheck.api.domain.team.dto.request;
 
-import com.chukcheck.core.entity.Region;
-import com.chukcheck.core.entity.Team;
+import com.chukcheck.core.domain.team.command.TeamCreateCommand;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,7 +10,7 @@ import static lombok.AccessLevel.PROTECTED;
 
 @Getter
 @NoArgsConstructor(access = PROTECTED)
-public class TeamCreateRequest {
+public class TeamCreateRequestDto {
 
     @NotEmpty
     private Long regionId;
@@ -20,15 +19,12 @@ public class TeamCreateRequest {
     private String name;
 
     @Builder
-    public TeamCreateRequest(Long regionId, String name) {
+    public TeamCreateRequestDto(Long regionId, String name) {
         this.regionId = regionId;
         this.name = name;
     }
 
-    public Team toEntity(Region region) {
-        return Team.builder()
-                .region(region)
-                .name(name)
-                .build();
+    public TeamCreateCommand toCommand() {
+        return new TeamCreateCommand(regionId, name);
     }
 }

@@ -1,8 +1,9 @@
-package com.chukcheck.core.dto.response;
+package com.chukcheck.api.domain.team.dto.response;
 
+import com.chukcheck.api.domain.region.dto.response.RegionResponseDto;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.chukcheck.core.entity.BaseStatus;
-import com.chukcheck.core.entity.Team;
+import com.chukcheck.core.common.model.BaseStatus;
+import com.chukcheck.core.domain.team.entity.Team;
 import lombok.Data;
 import lombok.experimental.SuperBuilder;
 
@@ -14,7 +15,7 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 @SuperBuilder
 @JsonInclude(NON_NULL)
 
-public class TeamResponse {
+public class TeamResponseDto {
 
     private final Long teamId;
     private final String name;
@@ -22,16 +23,16 @@ public class TeamResponse {
     private final LocalDateTime createdDate;
     private final LocalDateTime updatedDate;
 
-    private final RegionResponse region;
+    private final RegionResponseDto region;
 
-    public static TeamResponse of(Team team) {
-        return TeamResponse.builder()
+    public static TeamResponseDto of(Team team) {
+        return TeamResponseDto.builder()
                 .teamId(team.getId())
                 .name(team.getName())
                 .status(team.getStatus())
                 .createdDate(team.getCreatedDate())
                 .updatedDate(team.getUpdatedDate())
-                .region(RegionResponse.of(team.getRegion()))
+                .region(RegionResponseDto.of(team.getRegion()))
                 .build();
     }
 }
