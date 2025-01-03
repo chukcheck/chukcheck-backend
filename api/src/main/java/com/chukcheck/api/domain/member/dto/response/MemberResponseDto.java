@@ -1,7 +1,8 @@
-package com.chukcheck.core.dto.response;
+package com.chukcheck.api.domain.member.dto.response;
 
+import com.chukcheck.core.dto.response.SnsResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.chukcheck.core.entity.Member;
+import com.chukcheck.core.domain.member.entity.Member;
 import lombok.Builder;
 import lombok.Data;
 
@@ -13,7 +14,7 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 @Data
 @Builder
 @JsonInclude(NON_NULL)
-public class MemberResponse {
+public class MemberResponseDto {
 
     private final Long memberId;
     private final String name;
@@ -24,8 +25,8 @@ public class MemberResponse {
 
     private final SnsResponse sns;
 
-    public static MemberResponse of(Member member) {
-        return MemberResponse.builder()
+    public static MemberResponseDto of(Member member) {
+        return MemberResponseDto.builder()
                 .memberId(member.getId())
                 .name(member.getName())
                 .email(member.getEmail())

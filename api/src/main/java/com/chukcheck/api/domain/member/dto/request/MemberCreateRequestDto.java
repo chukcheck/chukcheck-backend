@@ -1,7 +1,8 @@
-package com.chukcheck.core.dto.request.create;
+package com.chukcheck.api.domain.member.dto.request;
 
-import com.chukcheck.core.entity.Member;
-import com.chukcheck.core.entity.Sns;
+import com.chukcheck.core.domain.member.command.MemberCreateCommand;
+import com.chukcheck.core.domain.member.entity.Member;
+import com.chukcheck.core.domain.sns.entity.Sns;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
@@ -15,7 +16,7 @@ import static lombok.AccessLevel.PROTECTED;
 
 @Getter
 @NoArgsConstructor(access = PROTECTED)
-public class MemberCreateRequest {
+public class MemberCreateRequestDto {
 
     @NotEmpty
     private Long snsId;
@@ -30,19 +31,14 @@ public class MemberCreateRequest {
     private LocalDate birthDate;
 
     @Builder
-    public MemberCreateRequest(Long snsId, String name, String email, LocalDate birthDate) {
+    public MemberCreateRequestDto(Long snsId, String name, String email, LocalDate birthDate) {
         this.snsId = snsId;
         this.name = name;
         this.email = email;
         this.birthDate = birthDate;
     }
 
-    public Member toEntity(Sns sns) {
-        return Member.builder()
-                .sns(sns)
-                .name(name)
-                .email(email)
-                .birthDate(birthDate)
-                .build();
+    public MemberCreateCommand toCommand() {
+        return new MemberCreateCommand(snsId, name, email, birthDate);
     }
 }
