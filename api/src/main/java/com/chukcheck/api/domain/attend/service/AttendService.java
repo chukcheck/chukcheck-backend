@@ -27,6 +27,7 @@ public class AttendService implements AttendUseCase {
     private final PlayerReader playerReader;
     private final MatchReader matchReader;
 
+    @Override
     public AttendResponseDto create(AttendCreateCommand command) {
         Player player = playerReader.findById(command.playerId());
         Match match = matchReader.findById(command.matchId());
@@ -36,6 +37,7 @@ public class AttendService implements AttendUseCase {
         return AttendResponseDto.of(attend);
     }
 
+    @Override
     public AttendResponseDto update(AttendUpdateCommand command) {
         Attend attend = attendReader.findById(command.id());
 
@@ -44,6 +46,7 @@ public class AttendService implements AttendUseCase {
         return AttendResponseDto.of(attend);
     }
 
+    @Override
     @Transactional(readOnly = true)
     public List<AttendResponseDto> readAll(AttendSearchCommand command) {
         return attendReader.findQueryBySearch(command).stream()
@@ -51,6 +54,7 @@ public class AttendService implements AttendUseCase {
                 .toList();
     }
 
+    @Override
     @Transactional(readOnly = true)
     public AttendResponseDto read(Long id) {
         Attend attend = attendReader.findQueryById(id);

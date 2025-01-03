@@ -16,7 +16,6 @@ import static com.chukcheck.core.domain.match.entity.QMatch.match;
 import static com.chukcheck.core.domain.stadium.entity.QStadium.stadium;
 import static com.chukcheck.core.domain.team.entity.QTeam.team;
 import static java.time.LocalTime.MAX;
-import static java.util.Objects.nonNull;
 import static java.util.Optional.ofNullable;
 
 @RequiredArgsConstructor
@@ -109,19 +108,35 @@ public class MatchRepositoryImpl implements MatchQueryRepository {
     }
 
     private BooleanExpression teamIdEqual(Long id) {
-        return nonNull(id) ? match.team.id.eq(id) : null;
+        if (id == null) {
+            return null;
+        }
+
+        return match.team.id.eq(id);
     }
 
     private BooleanExpression stadiumIdEqual(Long id) {
-        return nonNull(id) ? match.stadium.id.eq(id) : null;
+        if (id == null) {
+            return null;
+        }
+
+        return match.stadium.id.eq(id);
     }
 
     private BooleanExpression statusEqual(MatchStatus status) {
-        return nonNull(status) ? match.status.eq(status) : null;
+        if (status == null) {
+            return null;
+        }
+
+        return match.status.eq(status);
     }
 
     private BooleanExpression matchDateBetween(LocalDate startDate, LocalDate endDate) {
-        return nonNull(startDate) && nonNull(endDate) ? match.matchDate.startDate.goe(startDate.atStartOfDay())
-                        .and(match.matchDate.endDate.loe(endDate.atTime(MAX))) : null;
+        if (startDate == null || endDate == null) {
+            return null;
+        }
+
+        return match.matchDate.startDate.goe(startDate.atStartOfDay())
+                .and(match.matchDate.endDate.loe(endDate.atTime(MAX)));
     }
 }

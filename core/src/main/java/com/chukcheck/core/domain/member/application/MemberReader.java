@@ -14,4 +14,6 @@ public interface MemberReader {
     List<Member> findQueryBySearch(MemberSearchCommand command);
 
     Member findQueryById(Long id);
+
+    Member findById(Long id);
 }

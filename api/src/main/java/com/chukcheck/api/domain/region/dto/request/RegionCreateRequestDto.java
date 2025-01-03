@@ -25,9 +25,6 @@ public class RegionCreateRequestDto {
     }
 
     public RegionCreateCommand toCommand() {
-        return RegionCreateCommand.builder()
-                .country(country)
-                .city(city)
-                .build();
+        return new RegionCreateCommand(country, city);
     }
 }

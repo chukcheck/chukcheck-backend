@@ -1,7 +1,7 @@
 package com.chukcheck.api.domain.player.dto.response;
 
 import com.chukcheck.api.domain.member.dto.response.MemberResponseDto;
-import com.chukcheck.core.dto.response.TeamResponse;
+import com.chukcheck.api.domain.team.dto.response.TeamResponseDto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.chukcheck.core.common.model.BaseStatus;
 import com.chukcheck.core.domain.player.entity.Player;
@@ -28,7 +28,7 @@ public class PlayerResponseDto {
     private final LocalDateTime updatedDate;
 
     private final MemberResponseDto member;
-    private final TeamResponse team;
+    private final TeamResponseDto team;
 
     public static PlayerResponseDto of(Player player) {
         return PlayerResponseDto.builder()
@@ -40,7 +40,7 @@ public class PlayerResponseDto {
                 .createdDate(player.getCreatedDate())
                 .updatedDate(player.getUpdatedDate())
                 .member(MemberResponseDto.of(player.getMember()))
-                .team(TeamResponse.of(player.getTeam()))
+                .team(TeamResponseDto.of(player.getTeam()))
                 .build();
     }
 }

@@ -1,6 +1,6 @@
 package com.chukcheck.api.domain.member.dto.response;
 
-import com.chukcheck.core.dto.response.SnsResponse;
+import com.chukcheck.api.domain.sns.dto.response.SnsResponseDto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.chukcheck.core.domain.member.entity.Member;
 import lombok.Builder;
@@ -23,7 +23,7 @@ public class MemberResponseDto {
     private final LocalDateTime createdDate;
     private final LocalDateTime updatedDate;
 
-    private final SnsResponse sns;
+    private final SnsResponseDto sns;
 
     public static MemberResponseDto of(Member member) {
         return MemberResponseDto.builder()
@@ -33,7 +33,7 @@ public class MemberResponseDto {
                 .birthDate(member.getBirthDate())
                 .createdDate(member.getCreatedDate())
                 .updatedDate(member.getUpdatedDate())
-                .sns(SnsResponse.of(member.getSns()))
+                .sns(SnsResponseDto.of(member.getSns()))
                 .build();
     }
 }

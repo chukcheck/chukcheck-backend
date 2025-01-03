@@ -11,9 +11,7 @@ import java.util.Optional;
 
 import static com.chukcheck.core.domain.member.entity.QMember.member;
 import static com.chukcheck.core.domain.sns.entity.QSns.sns;
-import static java.util.Objects.nonNull;
 import static java.util.Optional.ofNullable;
-import static org.springframework.util.StringUtils.hasText;
 
 @RequiredArgsConstructor
 public class MemberRepositoryImpl implements MemberQueryRepository {
@@ -48,14 +46,26 @@ public class MemberRepositoryImpl implements MemberQueryRepository {
     }
 
     private BooleanExpression nameEqual(String name) {
-        return hasText(name) ? member.name.eq(name) : null;
+        if (name == null) {
+            return null;
+        }
+
+        return member.name.eq(name);
     }
 
     private BooleanExpression emailEqual(String email) {
-        return hasText(email) ? member.email.eq(email) : null;
+        if (email == null) {
+            return null;
+        }
+
+        return member.email.eq(email);
     }
 
     private BooleanExpression snsIdEqual(Long snsId) {
-        return nonNull(snsId) ? sns.id.eq(snsId) : null;
+        if (snsId == null) {
+            return null;
+        }
+
+        return sns.id.eq(snsId);
     }
 }

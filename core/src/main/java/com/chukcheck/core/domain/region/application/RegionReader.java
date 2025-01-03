@@ -9,4 +9,6 @@ public interface RegionReader {
     Region findNullableByCountryAndCity(String country, String city);
 
     List<Region> findAll();
+
+    Region findById(Long id);
 }

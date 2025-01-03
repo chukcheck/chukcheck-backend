@@ -5,8 +5,8 @@ import com.chukcheck.core.domain.match.model.MatchAttendDate;
 import com.chukcheck.core.domain.match.model.MatchDate;
 import com.chukcheck.core.domain.match.model.MatchStatus;
 import com.chukcheck.core.domain.match.model.MatchVoteDate;
-import com.chukcheck.core.dto.response.StadiumResponse;
-import com.chukcheck.core.dto.response.TeamResponse;
+import com.chukcheck.api.domain.stadium.dto.response.StadiumResponseDto;
+import com.chukcheck.api.domain.team.dto.response.TeamResponseDto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
@@ -31,8 +31,8 @@ public class MatchResponseDto {
     private final LocalDateTime createdDate;
     private final LocalDateTime updatedDate;
 
-    private final TeamResponse team;
-    private final StadiumResponse stadium;
+    private final TeamResponseDto team;
+    private final StadiumResponseDto stadium;
 
     public static MatchResponseDto of(Match match) {
         return MatchResponseDto.builder()
@@ -46,8 +46,8 @@ public class MatchResponseDto {
                 .matchAttendDate(match.getMatchAttendDate())
                 .createdDate(match.getCreatedDate())
                 .updatedDate(match.getUpdatedDate())
-                .team(TeamResponse.of(match.getTeam()))
-                .stadium(StadiumResponse.of(match.getStadium()))
+                .team(TeamResponseDto.of(match.getTeam()))
+                .stadium(StadiumResponseDto.of(match.getStadium()))
                 .build();
     }
 }
