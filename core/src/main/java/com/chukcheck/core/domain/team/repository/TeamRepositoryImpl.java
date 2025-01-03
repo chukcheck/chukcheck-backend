@@ -1,8 +1,8 @@
-package com.chukcheck.core.repository;
+package com.chukcheck.core.domain.team.repository;
 
-import com.chukcheck.core.dto.search.TeamSearch;
-import com.chukcheck.core.entity.BaseStatus;
-import com.chukcheck.core.entity.Team;
+import com.chukcheck.core.common.model.BaseStatus;
+import com.chukcheck.core.domain.team.command.TeamSearchCommand;
+import com.chukcheck.core.domain.team.entity.Team;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -10,10 +10,8 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 import java.util.Optional;
 
-import static com.chukcheck.core.entity.QRegion.region;
-import static com.chukcheck.core.entity.QTeam.team;
-import static java.util.Objects.nonNull;
-import static org.springframework.util.StringUtils.hasText;
+import static com.chukcheck.core.domain.region.entity.QRegion.region;
+import static com.chukcheck.core.domain.team.entity.QTeam.team;
 
 @RequiredArgsConstructor
 public class TeamRepositoryImpl implements TeamQueryRepository {
@@ -21,14 +19,14 @@ public class TeamRepositoryImpl implements TeamQueryRepository {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<Team> findQueryBySearch(TeamSearch search) {
+    public List<Team> findQueryBySearch(TeamSearchCommand command) {
         return queryFactory
                 .selectFrom(team)
                 .join(team.region, region).fetchJoin()
                 .where(
-                        regionIdEqual(search.getRegionId()),
-                        nameEq(search.getName()),
-                        statusEqual(search.getStatus())
+                        regionIdEqual(command.regionId()),
+                        nameEq(command.name()),
+                        statusEqual(command.status())
                 ).fetch();
     }
 
@@ -42,14 +40,26 @@ public class TeamRepositoryImpl implements TeamQueryRepository {
     }
 
     private BooleanExpression regionIdEqual(Long id) {
-        return nonNull(id) ? team.region.id.eq(id) : null;
+        if (id == null) {
+            return null;
+        }
+
+        return team.region.id.eq(id);
     }
 
     private BooleanExpression nameEq(String name) {
-        return hasText(name) ? team.name.eq(name) : null;
+        if (name == null) {
+            return null;
+        }
+
+        return team.name.eq(name);
     }
 
     private BooleanExpression statusEqual(BaseStatus status) {
-        return nonNull(status) ? team.status.eq(status) : null;
+        if (status == null) {
+            return null;
+        }
+
+        return team.status.eq(status);
     }
 }

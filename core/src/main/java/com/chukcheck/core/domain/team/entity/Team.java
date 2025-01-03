@@ -1,5 +1,10 @@
-package com.chukcheck.core.entity;
+package com.chukcheck.core.domain.team.entity;
 
+import com.chukcheck.core.domain.match.entity.Match;
+import com.chukcheck.core.domain.player.entity.Player;
+import com.chukcheck.core.domain.region.entity.Region;
+import com.chukcheck.core.common.model.BaseStatus;
+import com.chukcheck.core.common.model.BaseTime;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -8,7 +13,7 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.chukcheck.core.entity.BaseStatus.WAIT;
+import static com.chukcheck.core.common.model.BaseStatus.WAIT;
 import static jakarta.persistence.EnumType.STRING;
 import static jakarta.persistence.FetchType.LAZY;
 import static lombok.AccessLevel.PROTECTED;
@@ -49,7 +54,9 @@ public class Team extends BaseTime {
         this.status = WAIT;
     }
 
-    public void setStatus(BaseStatus status) {
-        this.status = status;
+    public void updateStatus(BaseStatus status) {
+        if (status != null) {
+            this.status = status;
+        }
     }
 }
