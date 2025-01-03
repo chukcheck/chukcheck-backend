@@ -1,7 +1,6 @@
 package com.chukcheck.api.domain.region.dto.request;
 
 import com.chukcheck.core.domain.region.command.RegionCreateCommand;
-import com.chukcheck.core.domain.region.entity.Region;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Getter;
