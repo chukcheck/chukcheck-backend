@@ -1,6 +1,6 @@
-package com.chukcheck.core.repository;
+package com.chukcheck.core.domain.member.repository;
 
-import com.chukcheck.core.entity.Member;
+import com.chukcheck.core.domain.member.entity.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

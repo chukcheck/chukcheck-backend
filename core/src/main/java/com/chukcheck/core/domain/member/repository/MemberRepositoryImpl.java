@@ -1,7 +1,7 @@
-package com.chukcheck.core.repository;
+package com.chukcheck.core.domain.member.repository;
 
-import com.chukcheck.core.dto.search.MemberSearch;
-import com.chukcheck.core.entity.Member;
+import com.chukcheck.core.domain.member.command.MemberSearchCommand;
+import com.chukcheck.core.domain.member.entity.Member;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
@@ -9,8 +9,8 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 import java.util.Optional;
 
-import static com.chukcheck.core.entity.QMember.member;
-import static com.chukcheck.core.entity.QSns.sns;
+import static com.chukcheck.core.domain.member.entity.QMember.member;
+import static com.chukcheck.core.domain.sns.entity.QSns.sns;
 import static java.util.Objects.nonNull;
 import static java.util.Optional.ofNullable;
 import static org.springframework.util.StringUtils.hasText;
@@ -21,11 +21,11 @@ public class MemberRepositoryImpl implements MemberQueryRepository {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<Member> findQueryBySearch(MemberSearch search) {
+    public List<Member> findQueryBySearch(MemberSearchCommand search) {
         return queryFactory
                 .selectFrom(member)
                 .join(member.sns, sns).fetchJoin()
-                .where(nameEqual(search.getName()), emailEqual(search.getEmail()), snsIdEqual(search.getSnsId()))
+                .where(nameEqual(search.name()), emailEqual(search.email()), snsIdEqual(search.snsId()))
                 .fetch();
     }
 

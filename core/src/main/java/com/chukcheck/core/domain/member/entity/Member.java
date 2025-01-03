@@ -1,5 +1,8 @@
-package com.chukcheck.core.entity;
+package com.chukcheck.core.domain.member.entity;
 
+import com.chukcheck.core.common.model.BaseTime;
+import com.chukcheck.core.domain.player.entity.Player;
+import com.chukcheck.core.domain.sns.entity.Sns;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -36,14 +39,6 @@ public class Member extends BaseTime {
 
     @OneToMany(mappedBy = "member")
     private final List<Player> players = new ArrayList<>();
-
-    public Member(String name) {
-        this(name, null, null, null);
-    }
-
-    public Member(String name, Sns sns) {
-        this(name, null, null, sns);
-    }
 
     @Builder
     public Member(String name, String email, LocalDate birthDate, Sns sns) {
