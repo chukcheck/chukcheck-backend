@@ -6,7 +6,6 @@ import com.chukcheck.core.domain.match.model.MatchDate;
 import com.chukcheck.core.domain.match.model.MatchVoteDate;
 import com.chukcheck.core.domain.stadium.entity.Stadium;
 import com.chukcheck.core.domain.team.entity.Team;
-import lombok.Getter;
 
 import java.time.LocalDateTime;
 

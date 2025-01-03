@@ -1,15 +1,12 @@
 package com.chukcheck.api.domain.match.service;
 
 import com.chukcheck.api.domain.match.dto.response.MatchResponseDto;
-import com.chukcheck.api.domain.stadium.service.StadiumService;
-import com.chukcheck.api.domain.team.service.TeamService;
 import com.chukcheck.core.domain.match.application.MatchReader;
 import com.chukcheck.core.domain.match.application.MatchWriter;
 import com.chukcheck.core.domain.match.command.MatchCreateCommand;
 import com.chukcheck.core.domain.match.command.MatchSearchCommand;
 import com.chukcheck.core.domain.match.command.MatchUpdateCommand;
 import com.chukcheck.core.domain.match.entity.Match;
-import com.chukcheck.core.domain.match.repository.MatchRepository;
 import com.chukcheck.core.domain.stadium.application.StadiumReader;
 import com.chukcheck.core.domain.stadium.entity.Stadium;
 import com.chukcheck.core.domain.team.application.TeamReader;

@@ -1,12 +1,6 @@
 package com.chukcheck.api.domain.match.dto.request;
 
 import com.chukcheck.core.domain.match.command.MatchCreateCommand;
-import com.chukcheck.core.domain.match.entity.Match;
-import com.chukcheck.core.domain.match.model.MatchAttendDate;
-import com.chukcheck.core.domain.match.model.MatchDate;
-import com.chukcheck.core.domain.match.model.MatchVoteDate;
-import com.chukcheck.core.domain.stadium.entity.Stadium;
-import com.chukcheck.core.domain.team.entity.Team;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Getter;
