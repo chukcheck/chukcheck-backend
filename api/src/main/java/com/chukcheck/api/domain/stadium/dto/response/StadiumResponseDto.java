@@ -1,6 +1,6 @@
-package com.chukcheck.core.dto.response;
+package com.chukcheck.api.domain.stadium.dto.response;
 
-import com.chukcheck.core.entity.Stadium;
+import com.chukcheck.core.domain.stadium.entity.Stadium;
 import lombok.Builder;
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class StadiumResponse {
+public class StadiumResponseDto {
 
     private final Long stadiumId;
     private final String name;
@@ -18,8 +18,8 @@ public class StadiumResponse {
     private final LocalDateTime createdDate;
     private final LocalDateTime updatedDate;
 
-    public static StadiumResponse of(Stadium stadium) {
-        return StadiumResponse.builder()
+    public static StadiumResponseDto of(Stadium stadium) {
+        return StadiumResponseDto.builder()
                 .stadiumId(stadium.getId())
                 .name(stadium.getName())
                 .address(stadium.getAddress())

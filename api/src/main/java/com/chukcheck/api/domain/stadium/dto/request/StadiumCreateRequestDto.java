@@ -1,6 +1,7 @@
-package com.chukcheck.core.dto.request.create;
+package com.chukcheck.api.domain.stadium.dto.request;
 
-import com.chukcheck.core.entity.Stadium;
+import com.chukcheck.core.domain.stadium.command.StadiumCreateCommand;
+import com.chukcheck.core.domain.stadium.entity.Stadium;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Getter;
@@ -10,7 +11,7 @@ import static lombok.AccessLevel.PROTECTED;
 
 @Getter
 @NoArgsConstructor(access = PROTECTED)
-public class StadiumCreateRequest {
+public class StadiumCreateRequestDto {
 
     @NotEmpty
     private String name;
@@ -23,19 +24,14 @@ public class StadiumCreateRequest {
     private double longitude;
 
     @Builder
-    public StadiumCreateRequest(String name, String address, double latitude, double longitude) {
+    public StadiumCreateRequestDto(String name, String address, double latitude, double longitude) {
         this.name = name;
         this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
-    public Stadium toEntity() {
-        return Stadium.builder()
-                .name(name)
-                .address(address)
-                .latitude(latitude)
-                .longitude(longitude)
-                .build();
+    public StadiumCreateCommand toCommand() {
+        return new StadiumCreateCommand(name, address, latitude, longitude);
     }
 }
