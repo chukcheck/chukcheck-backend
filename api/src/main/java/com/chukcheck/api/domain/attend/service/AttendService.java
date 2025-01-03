@@ -1,15 +1,12 @@
 package com.chukcheck.api.domain.attend.service;
 
 import com.chukcheck.api.domain.attend.dto.response.AttendResponseDto;
-import com.chukcheck.api.domain.match.service.MatchService;
-import com.chukcheck.api.domain.player.service.PlayerService;
 import com.chukcheck.core.domain.attend.application.AttendReader;
 import com.chukcheck.core.domain.attend.application.AttendWriter;
 import com.chukcheck.core.domain.attend.command.AttendCreateCommand;
 import com.chukcheck.core.domain.attend.command.AttendSearchCommand;
 import com.chukcheck.core.domain.attend.command.AttendUpdateCommand;
 import com.chukcheck.core.domain.attend.entity.Attend;
-import com.chukcheck.core.domain.attend.repository.AttendRepository;
 import com.chukcheck.core.domain.match.application.MatchReader;
 import com.chukcheck.core.domain.match.entity.Match;
 import com.chukcheck.core.domain.player.application.PlayerReader;

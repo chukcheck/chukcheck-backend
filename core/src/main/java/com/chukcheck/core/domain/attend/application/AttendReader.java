@@ -3,7 +3,6 @@ package com.chukcheck.core.domain.attend.application;
 import com.chukcheck.core.domain.attend.command.AttendSearchCommand;
 import com.chukcheck.core.domain.attend.entity.Attend;
 
-import java.util.Collection;
 import java.util.List;
 
 public interface AttendReader {
