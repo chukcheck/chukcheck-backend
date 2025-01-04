@@ -39,3 +39,4 @@ out/
 generated
 
 /src/main/resources/static/
+/api/src/main/resources/static/
