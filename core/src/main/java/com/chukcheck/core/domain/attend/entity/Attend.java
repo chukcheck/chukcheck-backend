@@ -42,14 +42,22 @@ public class Attend extends BaseTime {
         setMatch(match);
     }
 
-    private void setMatch(Match match) {
-        this.match = match;
-        this.match.getAttends().add(this);
+    public static Attend ofAbsent(Player player, Match match) {
+        return Attend.builder()
+                .status(AttendStatus.ABSENT)
+                .player(player)
+                .match(match)
+                .build();
     }
 
     public void updateStatus(AttendStatus status) {
         if (status != null) {
             this.status = status;
         }
+    }
+
+    private void setMatch(Match match) {
+        this.match = match;
+        this.match.getAttends().add(this);
     }
 }

@@ -140,4 +140,8 @@ public class Match extends BaseTime {
     public void updateAttendDeadlineDate(LocalDateTime attendDeadlineDate) {
         this.matchAttendDate.updateDeadlineDate(attendDeadlineDate);
     }
+
+    public Long getTeamId() {
+        return team.getId();
+    }
 }

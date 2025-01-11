@@ -1,6 +1,7 @@
 package com.chukcheck.core.domain.match.repository;
 
 import com.chukcheck.core.domain.match.command.MatchSearchCommand;
+import com.chukcheck.core.domain.match.command.MatchSearchDateCommand;
 import com.chukcheck.core.domain.match.entity.Match;
 import com.chukcheck.core.domain.match.model.MatchStatus;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -24,60 +25,27 @@ public class MatchRepositoryImpl implements MatchQueryRepository {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<Match> findQueryBySearch(MatchSearchCommand search) {
+    public List<Match> findQueryBySearch(MatchSearchCommand command) {
         return queryFactory
                 .selectFrom(match)
                 .join(match.team, team).fetchJoin()
                 .join(match.stadium, stadium).fetchJoin()
                 .where(
-                        teamIdEqual(search.teamId()),
-                        stadiumIdEqual(search.stadiumId()),
-                        statusEqual(search.status()),
-                        matchDateBetween(search.startDate(), search.endDate())
+                        teamIdEqual(command.teamId()),
+                        stadiumIdEqual(command.stadiumId()),
+                        statusEqual(command.status()),
+                        matchDateBetween(command.startDate(), command.endDate())
                 ).fetch();
     }
 
     @Override
-    public List<Match> findQueryVoteStartByStatus(MatchStatus status) {
+    public List<Match> findQueryBySearchDate(MatchSearchDateCommand command) {
         return queryFactory
                 .selectFrom(match)
                 .join(match.team, team).fetchJoin()
                 .where(
-                        statusEqual(status),
-                        beforeVoteStartDate()
-                ).fetch();
-    }
-
-    @Override
-    public List<Match> findQueryVoteEndByStatus(MatchStatus status) {
-        return queryFactory
-                .selectFrom(match)
-                .join(match.team, team).fetchJoin()
-                .where(
-                        statusEqual(status),
-                        beforeVoteEndDate()
-                ).fetch();
-    }
-
-    @Override
-    public List<Match> findQueryMatchStartByStatus(MatchStatus status) {
-        return queryFactory
-                .selectFrom(match)
-                .join(match.team, team).fetchJoin()
-                .where(
-                        statusEqual(status),
-                        beforeMatchStartDate()
-                ).fetch();
-    }
-
-    @Override
-    public List<Match> findQueryMatchEndByStatus(MatchStatus status) {
-        return queryFactory
-                .selectFrom(match)
-                .join(match.team, team).fetchJoin()
-                .where(
-                        statusEqual(status),
-                        beforeMatchEndDate()
+                        statusEqual(command.status()),
+                        currentDateBefore(command.dateTimePath())
                 ).fetch();
     }
 
@@ -89,22 +57,6 @@ public class MatchRepositoryImpl implements MatchQueryRepository {
                 .join(match.stadium, stadium).fetchJoin()
                 .where(match.id.eq(id))
                 .fetchOne());
-    }
-
-    private BooleanExpression beforeVoteStartDate() {
-        return match.matchVoteDate.startDate.before(LocalDateTime.now());
-    }
-
-    private BooleanExpression beforeVoteEndDate() {
-        return match.matchVoteDate.endDate.before(LocalDateTime.now());
-    }
-
-    private BooleanExpression beforeMatchEndDate() {
-        return match.matchDate.endDate.before(LocalDateTime.now());
-    }
-
-    private BooleanExpression beforeMatchStartDate() {
-        return match.matchDate.startDate.before(LocalDateTime.now());
     }
 
     private BooleanExpression teamIdEqual(Long id) {
@@ -138,5 +90,9 @@ public class MatchRepositoryImpl implements MatchQueryRepository {
 
         return match.matchDate.startDate.goe(startDate.atStartOfDay())
                 .and(match.matchDate.endDate.loe(endDate.atTime(MAX)));
+    }
+
+    private BooleanExpression currentDateBefore(MatchDateTimePath dateTimePath) {
+        return dateTimePath.getPath().before(LocalDateTime.now());
     }
 }

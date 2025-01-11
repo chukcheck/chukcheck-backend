@@ -12,4 +12,7 @@ public record PlayerSearchCommand(
         PlayerAuthority authority
 ) {
 
+    public static PlayerSearchCommand ofApproveByTeamId(Long teamId) {
+        return new PlayerSearchCommand(null, teamId, null, BaseStatus.APPROVE, null);
+    }
 }

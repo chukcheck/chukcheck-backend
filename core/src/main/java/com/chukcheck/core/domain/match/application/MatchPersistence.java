@@ -3,6 +3,7 @@ package com.chukcheck.core.domain.match.application;
 import com.chukcheck.core.common.exception.CoreError;
 import com.chukcheck.core.common.exception.CoreException;
 import com.chukcheck.core.domain.match.command.MatchSearchCommand;
+import com.chukcheck.core.domain.match.command.MatchSearchDateCommand;
 import com.chukcheck.core.domain.match.entity.Match;
 import com.chukcheck.core.domain.match.repository.MatchRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +30,11 @@ public class MatchPersistence implements MatchReader, MatchWriter {
     @Override
     public List<Match> findQueryBySearch(MatchSearchCommand command) {
         return repository.findQueryBySearch(command);
+    }
+
+    @Override
+    public List<Match> findQueryBySearchDate(MatchSearchDateCommand command) {
+        return repository.findQueryBySearchDate(command);
     }
 
     @Override

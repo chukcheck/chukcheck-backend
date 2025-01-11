@@ -8,4 +8,8 @@ public record VoteSearchCommand(
         VoteStatus status
 ) {
 
+    public static VoteSearchCommand ofTrueByMatchId(Long matchId) {
+        return new VoteSearchCommand(null, matchId, VoteStatus.TRUE);
+    }
+
 }

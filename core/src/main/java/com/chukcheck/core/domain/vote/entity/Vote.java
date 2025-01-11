@@ -42,14 +42,18 @@ public class Vote extends BaseTime {
         setMatch(match);
     }
 
-    private void setMatch(Match match) {
-        this.match = match;
-        this.match.getVotes().add(this);
+    public static Vote ofWait(Player player, Match match) {
+        return new Vote(VoteStatus.WAIT, player, match);
     }
 
     public void updateStatus(VoteStatus status) {
         if (status != null) {
             this.status = status;
         }
+    }
+
+    private void setMatch(Match match) {
+        this.match = match;
+        this.match.getVotes().add(this);
     }
 }
